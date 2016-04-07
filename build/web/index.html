@@ -1,0 +1,49 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div><h1>Instructions:</h1>
+             <p>There are six RESTful services provided in this project.</p>
+             <p>The first one is located in the path "/ConsensusPublicOpinion/webresources/scores/xml" and as parameters it needs the following:</p>
+             <ul>
+                 <li>uri : The uri of the xml file containing the data to be analyzed. It may be either a remote uri or a local absolute path in the server.</li>
+                 <li>datatag : The tag that denotes the data text in the source xml.</li>
+                 <li>keyword : The keyword or keyphrase to be analyzed.</li>
+             </ul>
+             <p>This service will read a remote or local xml file, it will extract all data enclosed in the given datatag and then analyze them using the given keyword. The results  will be stored in a database registered in the project's code for security reasons. The stored value will have the form {keyword,Score of Frequency, Score of Sentiment}.</p>
+             <p>The second service is located in the path "/ConsensusPublicOpinion/webresources/scores/file" and as parameters it needs the following:</p>
+             <ul>
+                 <li>uri : The uri of the text file containing the data to be analyzed. It may be either a remote uri or a local absolute path in the server.</li>
+                 <li>keyword : The keyword or keyphrase to be analyzed.</li>
+             </ul>
+             <p>This service will read a remote or local text file, it will register one document per line it reads and then analyze them using the given keyword. The results  will be stored in a database registered in the project's code for security reasons. The stored value will have the form {keyword,Score of Frequency, Score of Sentiment}.</p>
+            <p>The third service is located in the path "/ConsensusPublicOpinion/webresources/scores/service" and as parameters it needs the following:</p>
+             <ul>
+                 <li>scenario : The scenario which could be either "trasportation" or "biofuels"</li>
+                 <li>objective : The objective code number which is a number between 1 and 6 for the trasportation scenario and 1 to 4 for the biofuels scenario.</li>
+             </ul>
+             <p>This service will fetch the dataset related with the selected scenario from the crawler provided by ATC and then analyze it using the given objective. The results will be stored in a database registered in the project's code for security reasons. The stored value will have the form {keyword,Score of Frequency, Score of Sentiment}.</p>
+             <p>The fourth service is located in the path "/ConsensusPublicOpinion/webresources/aggregate" and as parameters it needs the following:</p>
+             <ul>
+                 <li>scenario : The scenario which could be either "trasportation" or "biofuels"</li>
+                 <li>objective : The objective code number which is a number between 1 and 6 for the trasportation scenario and 1 to 4 for the biofuels scenario.</li>
+             </ul>
+             <p>This service will fetch the SOS and SOF values from the database and aggregate them, resulting in a vector of two numerical values. The result will have the JSON form {"ObjectiveName": name_of_the_objective,"SOS": numeral,"SOF": numeral}.</p>
+             <p>The fifth service is located in the path "/ConsensusPublicOpinion/webresources/getDaily" and as parameters it needs the following:</p>
+             <ul>
+                 <li>scenario : The scenario which could be either "trasportation" or "biofuels"</li>
+                 <li>objective : The objective code number which is a number between 1 and 6 for the trasportation scenario and 1 to 4 for the biofuels scenario.</li>
+             </ul>
+             <p>This service will fetch the json array related with the selected scenario and objective, showing all historical data about the keywords, grouped by the date.</p>
+             <p>The sixth service is located in the path "/ConsensusPublicOpinion/webresources/scores/service/all" and needs no parameters.</p>
+             <p>This service will fetch the dataset related to both scenarios from the crawler provided by ATC and then analyze it using every predefined objective. The results will be stored in a database registered in the project's code for security reasons. The stored value will have the form {keyword,Score of Frequency, Score of Sentiment}.</p>
+       </div>
+    </body>
+</html>
